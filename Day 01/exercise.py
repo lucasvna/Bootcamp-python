@@ -23,4 +23,4 @@ dinheiro = float(input('Com quantos reais você vai pagar esta compra? '))
 #     print(f'Seu troco é {troco}')
 
 else:
-    print('aaaa')
+print('aaaa')
