@@ -1,26 +1,28 @@
-mercadorias = []
-produto = input('Qual produto deseja cadastrar? Ex.: café, biscoito: ')
-valorProduto = float(input('Qual o valor do produto? '))
-marca = input('Qual a marca do produto? ')
-estoque = int(input('Quantos produtos disponíveis em estoque? '))
+estoque = []
 
-cadastro = (produto, valorProduto, marca, estoque)
-mercadorias.append(cadastro)
+num = int(input('Digite o número de produtos que quer cadastrar: '))
 
-def troco(valor, compra):
-    troco = compra - valorProduto
-    return troco
+for i in range(num):
+    nome = input('Digite o nome do produto: ')
+    qtdEstoque = int(input('Digite a quantidade em estoque: '))
+    valor = float(input('Digite o valor do produto: '))
+    produto = {nome, qtdEstoque, valor}
+    estoque.append(produto)
 
-total = int(input('Quantos produtos quer comprar? '))
-compra = valorProduto * estoque
+    qtde_vendida = int(input('Digite a quantidade a ser vendida: '))
 
-if total >  estoque:
-    print(f'Erro! Voce solicitou {total} produtos e há apenas {estoque} no estoque')
+    if qtde_vendida > qtdEstoque:
+        print('Não pode realizar a venda.')
 
-dinheiro = float(input('Com quantos reais você vai pagar esta compra? '))
+    else:
+        valor_pago = float(input('Digite o valor pago'))
+        realizarVenda(qtde_vendida, valor_pago, produto)
 
-# if dinheiro > compra:
-#     print(f'Seu troco é {troco}')
-
-else:
-print('aaaa')
+def realizarVenda(qtde_vendida, valor_pago, produto):
+    if qtde_vendida > qtdEstoque:
+        print('Quantidade insuficiente em esstoque.')
+    else:
+        valor_total = qtde_vendida * valor
+        if valor_pago >= valor_total:
+            troco = valor_pago - valor_total
+            
